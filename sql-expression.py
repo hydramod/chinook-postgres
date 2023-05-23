@@ -7,9 +7,8 @@ from sqlalchemy.sql import select
 db = create_engine("postgresql:///chinook")
 
 schema_name = db.dialect.default_schema_name
-print(schema_name)
 
-meta = MetaData()
+meta = MetaData(schema_name)
 
 # create variable for "Artist" table
 artist_table = Table(
