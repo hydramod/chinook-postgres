@@ -78,6 +78,14 @@ tim_berners_lee = Programmer(
     famous_for = "World Wide Web"
 )
 
+hydra_mod = Programmer(
+    first_name = "hydra",
+    last_name = "mod",
+    gender = "M",
+    nationality = "Irish",
+    famous_for = "No idea"
+)
+
 # add each instance to uor session
 # session.add(ada_lovelace)
 # session.add(alan_turing)
@@ -85,10 +93,10 @@ tim_berners_lee = Programmer(
 # session.add(margaret_hamilton)
 # session.add(bill_gates)
 # session.add(tim_berners_lee)
-
+session.add(hydra_mod)
 
 # commit the session
-#session.commit()
+session.commit()
 
 #query the db to find all programmers
 programmers = session.query(Programmer)
