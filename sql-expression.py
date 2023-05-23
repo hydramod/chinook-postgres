@@ -44,22 +44,22 @@ track_table = Table(
 with db.connect() as connection:
 
     # Query1 - select all records from Artists table
-    select_query1 = select([artist_table])
+    select_query1 = artist_table.select()
 
     # Query 2 - select only the Name column from Artists table
-    select_query2 = select([artist_table.c.Name])
+    select_query2 = artist_table.select().with_only_columns(artist_table.c.Name)
 
     # Query 3 - select only Queen from Artists table
-    select_query3 = select([artist_table]).where(artist_table.c.Name == "Queen")
+    select_query3 = artist_table.select().where(artist_table.c.Name == "Queen")
 
     # Query 4 - select only by "ArtistId" #51 from "Artist" table
-    select_query4 = select([artist_table]).where(artist_table.c.ArtistId == 51)
+    select_query4 = artist_table.select().where(artist_table.c.ArtistId == 51)
 
     # Query 5 - select only the albums with "ArtistId" #51 on the "Album" table
-    select_query5 = select([album_table]).where(album_table.c.ArtistId == 51)
+    select_query5 = album_table.select().where(album_table.c.ArtistId == 51)
 
     # Query 6 - select all tracks where composer is Queen from the "Track" table
-    select_query6 = select([track_table]).where(track_table.c.Composer == "Queen")
+    select_query6 = track_table.select().where(track_table.c.Composer == "Queen")
 
     results1 = connection.execute(select_query1)
     for result in results1:
